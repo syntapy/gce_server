@@ -23,4 +23,5 @@ module "network" {
 module "server" {
   source = "./servers"
   subnetwork = module.network.subnetwork_name
+  address = module.network.ip_address
 }

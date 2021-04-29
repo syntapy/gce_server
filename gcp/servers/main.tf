@@ -2,6 +2,10 @@ variable "subnetwork" {
   type = string
 }
 
+variable "address" {
+  type = string
+}
+
 resource "google_compute_instance" "server" {
   boot_disk {
     initialize_params {
@@ -15,5 +19,8 @@ resource "google_compute_instance" "server" {
   zone = "us-west1-a"
   network_interface {
     subnetwork = var.subnetwork
+    access_config {
+      nat_ip = var.address
+    }
   }
 }
