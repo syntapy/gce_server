@@ -13,7 +13,7 @@ terraform {
 
 provider "google" {
   project = "cloud-course-4657313"
-  region = "us-central1"
+  region = "us-west1"
 }
 
 module "network" {

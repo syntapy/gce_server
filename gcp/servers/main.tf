@@ -19,11 +19,12 @@ resource "google_compute_instance" "server" {
     auto_delete = false
   }
 
-  machine_type = "n1-standard-2"
+  //tags = ["http-server","https-server"]
+  machine_type = "e2-standard-2"
   name = "k8s-practice-server"
-  zone = "us-central1-a"
+  zone = "us-west1-a"
   network_interface {
-    network = var.net_name
+    subnetwork = var.subnet_name
     access_config {
     }
   }
@@ -33,11 +34,19 @@ resource "google_compute_instance" "server" {
     ssh-keys = "user:${file("keys/id_gcp.pub")}"
   }
  
-  service_account {
-    email = google_service_account.instance_account.email
-    scopes = ["cloud-platform"]
-  }
+  //service_account {
+  //  email = "99124858490-compute@developer.gserviceaccount.com"
+  //  scopes = ["cloud-platform"]
+  //}
 }
+
+//data "google_service_account" "default" {
+// account_id = 
+//}
+
+//resource "google_service_account" "default" {
+//  account_id = data.google_service_account.default.name
+//}
 
 //variable "public_ip" {
 //  type = string
