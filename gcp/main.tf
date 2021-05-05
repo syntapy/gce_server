@@ -13,7 +13,7 @@ terraform {
 
 provider "google" {
   project = "cloud-course-4657313"
-  region = "us-west1"
+  region = "us-central1"
 }
 
 module "network" {
@@ -22,6 +22,6 @@ module "network" {
 
 module "server" {
   source = "./servers"
-  subnetwork = module.network.subnetwork_name
-  address = module.network.ip_address
+  subnet_name = module.network.subnet_name
+  net_name = module.network.net_name
 }
