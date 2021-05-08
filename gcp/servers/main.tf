@@ -25,14 +25,17 @@ resource "google_compute_instance" "server" {
   zone = "us-west1-a"
   network_interface {
     subnetwork = var.subnet_name
+    //network = var.net_name
     access_config {
     }
   }
 
+  //desired_status = "TERMINATED"
+
   allow_stopping_for_update = true
-  metadata = {
-    ssh-keys = "user:${file("keys/id_gcp.pub")}"
-  }
+  //metadata = {
+  //  ssh-keys = "user:${file("keys/id_gcp.pub")}"
+  //}
  
   //service_account {
   //  email = "99124858490-compute@developer.gserviceaccount.com"
