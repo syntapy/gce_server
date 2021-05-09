@@ -30,27 +30,12 @@ resource "google_compute_instance" "server" {
     }
   }
 
-  //desired_status = "TERMINATED"
+  desired_status = "RUNNING"
 
   allow_stopping_for_update = true
-  //metadata = {
-  //  ssh-keys = "user:${file("keys/id_gcp.pub")}"
-  //}
  
-  //service_account {
-  //  email = "99124858490-compute@developer.gserviceaccount.com"
-  //  scopes = ["cloud-platform"]
-  //}
+  service_account {
+    email = "99124858490-compute@developer.gserviceaccount.com"
+    scopes = ["cloud-platform"]
+  }
 }
-
-//data "google_service_account" "default" {
-// account_id = 
-//}
-
-//resource "google_service_account" "default" {
-//  account_id = data.google_service_account.default.name
-//}
-
-//variable "public_ip" {
-//  type = string
-//}
