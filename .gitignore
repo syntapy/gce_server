@@ -2,6 +2,6 @@
 *.out
 *.sw[op]
 .terraform*
-terraform.tfstate*
+terraform.*
 manual/
 keys/

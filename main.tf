@@ -2,6 +2,18 @@
 // m5a.large
 // 2 cpus, 8gb ram, 20gbb hdd
 
+variable project_id {
+  type = string
+}
+
+variable region {
+  type = string
+}
+
+variable image_name {
+  type = string
+}
+
 terraform {
   required_providers {
     google = {
@@ -12,8 +24,8 @@ terraform {
 }
 
 provider "google" {
-  project = "cloud-course-4657313"
-  region = "us-west1"
+  project = var.project_id 
+  region = var.region
 }
 
 module "network" {
@@ -22,6 +34,8 @@ module "network" {
 
 module "server" {
   source = "./servers"
+  image_name = var.image_name
+  image_family = var.project_id
   subnet_name = module.network.subnet_name
   net_name = module.network.net_name
 }

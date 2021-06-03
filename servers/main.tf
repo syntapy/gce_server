@@ -1,3 +1,11 @@
+variable "image_name" {
+  type = string
+}
+
+variable "image_family" {
+  type = string
+}
+
 variable "subnet_name" {
   type = string
 }
@@ -14,7 +22,7 @@ resource "google_service_account" "instance_account" {
 resource "google_compute_instance" "server" {
   boot_disk {
     initialize_params {
-      image = "ubuntu-os-cloud/ubuntu-2004-focal-v20210415"
+      image = join("/", [var.image_family, var.image_name])
     }
     auto_delete = false
   }
@@ -34,8 +42,8 @@ resource "google_compute_instance" "server" {
 
   allow_stopping_for_update = true
  
-  service_account {
-    email = "99124858490-compute@developer.gserviceaccount.com"
-    scopes = ["cloud-platform"]
-  }
+  //service_account {
+  //  email = "99124858490-compute@developer.gserviceaccount.com"
+  //  scopes = ["cloud-platform"]
+  //}
 }
