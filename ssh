@@ -1,2 +1,2 @@
-gcloud compute ssh --tunnel-through-iap k8s-practice-server
+gcloud compute ssh --tunnel-through-iap k8s-server
 #gcloud compute ssh --ssh-key-file=./keys/id_gcp k8s-practice-server

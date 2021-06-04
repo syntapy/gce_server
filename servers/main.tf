@@ -24,12 +24,12 @@ resource "google_compute_instance" "server" {
     initialize_params {
       image = join("/", [var.image_family, var.image_name])
     }
-    auto_delete = false
+    auto_delete = true
   }
 
   //tags = ["http-server","https-server"]
   machine_type = "e2-standard-2"
-  name = "k8s-practice-server"
+  name = "k8s-server"
   zone = "us-west1-a"
   network_interface {
     subnetwork = var.subnet_name
