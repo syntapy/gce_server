@@ -1,17 +1,5 @@
-variable "image_name" {
-  type = string
-}
-
-variable "image_family" {
-  type = string
-}
-
-variable "subnet_name" {
-  type = string
-}
-
-variable "net_name" {
-  type = string
+locals {
+  image_family = var.project_id
 }
 
 resource "google_service_account" "instance_account" {
@@ -22,7 +10,7 @@ resource "google_service_account" "instance_account" {
 resource "google_compute_instance" "server" {
   boot_disk {
     initialize_params {
-      image = join("/", [var.image_family, var.image_name])
+      image = join("/", [local.image_family, var.image_name])
     }
     auto_delete = true
   }
@@ -32,8 +20,8 @@ resource "google_compute_instance" "server" {
   name = "k8s-server"
   zone = "us-west1-a"
   network_interface {
-    subnetwork = var.subnet_name
-    //network = var.net_name
+    subnetwork = local.subnet_name
+    //network = local.net_name
     access_config {
     }
   }

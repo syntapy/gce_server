@@ -66,10 +66,7 @@ resource "google_compute_firewall" "net_inbound" {
   }
 }
 
-output "subnet_name" {
-  value = google_compute_subnetwork.vpc_subnet.name
-}
-
-output "net_name" {
-  value = google_compute_network.vpc_network.name
+locals {
+  subnet_name = google_compute_subnetwork.vpc_subnet.name
+  net_name = google_compute_network.vpc_network.name
 }

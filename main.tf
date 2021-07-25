@@ -27,15 +27,3 @@ provider "google" {
   project = var.project_id 
   region = var.region
 }
-
-module "network" {
-  source = "./network"
-}
-
-module "server" {
-  source = "./servers"
-  image_name = var.image_name
-  image_family = var.project_id
-  subnet_name = module.network.subnet_name
-  net_name = module.network.net_name
-}
