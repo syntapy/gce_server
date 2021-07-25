@@ -2,15 +2,15 @@
 // m5a.large
 // 2 cpus, 8gb ram, 20gbb hdd
 
-variable project_id {
+variable "project_id" {
   type = string
 }
 
-variable region {
+variable "region" {
   type = string
 }
 
-variable image_name {
+variable "image_name" {
   type = string
 }
 
@@ -23,6 +23,6 @@ terraform {
 }
 
 provider "google" {
-  project = var.project_id 
-  region = var.region
+  project = var.project_id
+  region  = var.region
 }
